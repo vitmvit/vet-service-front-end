@@ -59,7 +59,6 @@ export class CabinetPageGeneralMessagesComponent {
         this.user = response;
         this.role = response.role;
         this.login = response.login;
-
       },
       error: () => {
         this.sessionService.logOff();

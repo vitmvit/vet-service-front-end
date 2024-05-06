@@ -27,41 +27,41 @@
       <!--      /поиск-->
       <!--      карточки чатов-->
       @for (item of chats; track item.id) {
-      @if (item.status == "CLOSED"){
-      <div class="card my-4 bg-light">
-        <h5 class="card-header">Дата обновления:&nbsp;{{ item.updateDate }}</h5>
-        <div class="card-body">
-          <h5 class="card-title">Пользователь:&nbsp;{{item.userName}}</h5>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button (click)="toChat(item.id)" class="btn btn-dark me-md-2" type="button">
-              Перейти
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-              </svg>
-            </button>
+        @if (item.status == "CLOSED"){
+          <div class="card my-4 bg-light">
+            <h5 class="card-header">Дата обновления:&nbsp;{{ item.updateDate }}</h5>
+            <div class="card-body">
+              <h5 class="card-title">Пользователь:&nbsp;{{item.userName}}</h5>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button (click)="toChat(item.id)" class="btn btn-dark me-md-2" type="button">
+                  Перейти
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      } @else{
-      <div class="card my-4">
-        <h5 class="card-header">Дата обновления:&nbsp;{{ item.updateDate }}</h5>
-        <div class="card-body">
-          <h5 class="card-title">Пользователь:&nbsp;{{item.userName}}</h5>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button (click)="toChat(item.id)" class="btn btn-primary me-md-2" type="button">
-              Перейти
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-              </svg>
-            </button>
+        } @else{
+          <div class="card my-4">
+            <h5 class="card-header">Дата обновления:&nbsp;{{ item.updateDate }}</h5>
+            <div class="card-body">
+              <h5 class="card-title">Пользователь:&nbsp;{{item.userName}}</h5>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button (click)="toChat(item.id)" class="btn btn-primary me-md-2" type="button">
+                  Перейти
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      }
+        }
       } @empty {
-      <div class="text-center">
-        <img src="assets/img/empty_list.jpg" class="w-50" alt="pet">
-      </div>
+        <div class="text-center">
+          <img src="assets/img/empty_list.jpg" class="w-50" alt="pet">
+        </div>
       }
       <!--      /карточки чатов-->
     </div>

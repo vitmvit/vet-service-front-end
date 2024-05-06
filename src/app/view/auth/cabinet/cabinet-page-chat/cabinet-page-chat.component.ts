@@ -1,4 +1,4 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {MenuComponent} from "../../menu/menu/menu.component";
 import {FormsModule} from "@angular/forms";
 import {NgIf, NgStyle} from "@angular/common";
@@ -10,6 +10,7 @@ import {UserService} from "../../../../service/user.service";
 import {ChatService} from "../../../../service/chat.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MessageCreateDto} from "../../../../model/dto/message.create.dto";
+import { ActuatorService } from '../../../../service/actuator.service';
 
 @Component({
   selector: 'app-cabinet-page-chat',
@@ -23,7 +24,7 @@ import {MessageCreateDto} from "../../../../model/dto/message.create.dto";
   templateUrl: './cabinet-page-chat.component.html',
   styleUrl: './cabinet-page-chat.component.css'
 })
-export class CabinetPageChatComponent {
+export class CabinetPageChatComponent implements OnInit{
   itemName = "message-page";
 
   user!: UserModel;
@@ -49,11 +50,17 @@ export class CabinetPageChatComponent {
 
   constructor(private sessionService: SessionService,
               private userService: UserService,
+              private actuatorService: ActuatorService,
               private chatService: ChatService,
               private router: Router,
               private route: ActivatedRoute
   ) {
     sessionService.checkSession();
+    actuatorService.getHealthMessageService().subscribe({
+      error: () => {
+        this.router.navigateByUrl('page500');
+      }
+    })
     route.params.subscribe(params => this.id = params["id"]);
   }
 

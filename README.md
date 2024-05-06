@@ -1,3 +1,9 @@
+# vet-service-front-end
+
+[Точка входа в приложение](https://github.com/vitmvit/pet-helper-api-gateway-service)
+
+Клиентская часть приложения для вет-врача.
+
 # VetServiceFrontEnd
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.

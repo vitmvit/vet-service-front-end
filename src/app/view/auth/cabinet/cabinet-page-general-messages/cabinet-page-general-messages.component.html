@@ -12,8 +12,8 @@
       <!--      /header-->
       <!--      карточки чатов-->
       @for (item of chats; track item.id) {
-      <div class="card my-4">
-        <h5 class="card-header">Дата создания:&nbsp;{{ item.updateDate }}</h5>
+        <div class="card my-4">
+          <h5 class="card-header">Дата создания:&nbsp;{{ item.updateDate }}</h5>
           <div class="card-body">
             <h5 class="card-title">Пользователь:&nbsp;{{item.userName}}</h5>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -27,9 +27,9 @@
           </div>
         </div>
       } @empty {
-      <div class="text-center">
-        <img src="assets/img/empty_list.jpg" class="w-50" alt="pet">
-      </div>
+        <div class="text-center">
+          <img src="assets/img/empty_list.jpg" class="w-50" alt="pet">
+        </div>
       }
       <!--      /карточки чатов-->
     </div>

@@ -40,7 +40,7 @@ export class ChatService {
   // Получить свободные чаты
   getFreeChats(): Observable<ChatModel[]> {
     return this.httpClient.get<ChatModel[]>(
-      "http://localhost:8080/api/v1/chats/status/SUPPORT/FREE",
+      "http://localhost:8080/api/v1/chats/status/MEDICAL/FREE",
       this.sessionService.getHeaderToken()
     );
   }
