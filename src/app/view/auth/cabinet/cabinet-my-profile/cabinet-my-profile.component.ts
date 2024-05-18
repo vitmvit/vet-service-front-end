@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MenuComponent} from "../../menu/menu/menu.component";
 import {NgStyle} from "@angular/common";
 import {FormsModule} from "@angular/forms";
@@ -8,6 +8,7 @@ import {SessionService} from "../../../../service/session.service";
 import {Router} from "@angular/router";
 import {UserService} from "../../../../service/user.service";
 import {PasswordUpdateDto} from "../../../../model/dto/password.updare.dto";
+import {ActuatorService} from "../../../../service/actuator.service";
 
 @Component({
     selector: 'app-cabinet-my-profile',
@@ -20,7 +21,8 @@ import {PasswordUpdateDto} from "../../../../model/dto/password.updare.dto";
     templateUrl: './cabinet-my-profile.component.html',
     styleUrl: './cabinet-my-profile.component.css'
 })
-export class CabinetMyProfileComponent {
+export class CabinetMyProfileComponent implements OnInit {
+
     itemName = "my-profile";
 
     user!: UserModel;
@@ -34,8 +36,15 @@ export class CabinetMyProfileComponent {
     displayStyle = "none";
 
     constructor(private sessionService: SessionService,
+                private actuatorService: ActuatorService,
                 private router: Router,
                 private userService: UserService) {
+        this.actuatorService.getHealthService().subscribe({
+            error: () => {
+                this.router.navigateByUrl('page500');
+            }
+        })
+
         sessionService.checkSession();
     }
 
@@ -84,19 +93,18 @@ export class CabinetMyProfileComponent {
     }
 
     openPopup() {
+        // Отображает всплывающее окно
         this.displayStyle = "block";
     }
 
     closePopup() {
+        // Закрывает всплывающее окно
         this.displayStyle = "none";
     }
 
     logOff() {
+        // Очищает сессию и перенаправляет на страницу входа
         this.sessionService.clear();
         this.router.navigateByUrl('index');
-    }
-
-    reloadPage(): void {
-        window.location.reload();
     }
 }
